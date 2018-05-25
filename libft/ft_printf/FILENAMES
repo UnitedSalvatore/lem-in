@@ -1,0 +1,11 @@
+ft_handle_char.c
+ft_handle_string.c
+ft_handle_int.c
+ft_handle_ouxp.c
+ft_handle_num.c
+
+ft_handle_conversion.c
+ft_parse_specification.c
+ft_add_to_buf.c
+ft_put_width.c
+ft_printf.c
