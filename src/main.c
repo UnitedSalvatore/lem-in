@@ -6,7 +6,7 @@
 /*   By: ypikul <ypikul@student.unit.ua>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/25 16:29:07 by ypikul            #+#    #+#             */
-/*   Updated: 2018/06/04 16:02:17 by ypikul           ###   ########.fr       */
+/*   Updated: 2018/06/05 19:24:54 by ypikul           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,23 +14,17 @@
 #include "../libft/include/libft.h"
 #include <unistd.h>
 
-static void		parse_ants(int fd, t_maze *maze)
+static void		parse_ants(t_maze *maze)
 {
 	int		ants;
 
-	if (ft_getline(fd, &maze->line) < 0)
-		ft_error("Error while reading file");
-	ants = ft_atoi(str);
-	if (ants < 0 || ft_numlen(ants) != ft_strlen(str))
+	if (!maze->data)
+		ft_error("Error: empty input");
+	ants = ft_atoi(maze->data->line);
+	if (ants < 0 || ft_numlen(ants) != ft_strlen(maze->data->line))
 		ft_error("Error in number of ants");
 	maze->number_of_ants = (unsigned)ants;
-}
-
-static void		parse(int fd, t_maze *maze)
-{
-	parse_ants(fd, maze);
-	parse_rooms(fd, maze);
-	parse_links(fd, maze);
+	maze->data = maze->data->next;
 }
 
 int				main(void)
@@ -38,6 +32,9 @@ int				main(void)
 	t_maze	maze;
 
 	ft_bzero(&maze, sizeof(t_maze));
-	parse(STDIN_FILENO, &maze);
+	read_data(STDIN_FILENO, &maze);
+	parse_ants(&maze);
+	parse_rooms(&maze);
+	parse_links(&maze);
 	return (0);
 }

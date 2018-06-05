@@ -6,9 +6,11 @@
 /*   By: ypikul <ypikul@student.unit.ua>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/25 16:29:40 by ypikul            #+#    #+#             */
-/*   Updated: 2018/06/04 16:17:01 by ypikul           ###   ########.fr       */
+/*   Updated: 2018/06/05 19:18:00 by ypikul           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include <string.h>
 
 #ifndef LEMIN_H
 # define LEMIN_H
@@ -19,6 +21,7 @@
 
 typedef struct s_room	t_room;
 typedef struct s_link	t_link;
+typedef struct s_data	t_data;
 
 struct				s_room
 {
@@ -31,9 +34,15 @@ struct				s_room
 
 struct				s_link
 {
-	t_room			*room;
-	t_rooms			*next;
+	char			*name1;
+	char			*name2;
+	t_link			*next;
+};
 
+struct				s_data
+{
+	char			*line;
+	t_data			*next;
 };
 
 typedef struct		s_maze
@@ -44,18 +53,21 @@ typedef struct		s_maze
 	t_room			*finish;
 	t_link			*links;
 	\
-	char			*str;
+	t_data			*data;
+	t_data			*data_copy;
+	int				flag;
 }					t_maze;
 
 /*
-**	parse_rooms.c
+**	parse.c
 */
-void				parse_rooms(int fd, t_maze *maze);
+void				parse_rooms(t_maze *maze);
+void				parse_links(t_maze *maze);
 
 /*
-**	parse_rooms.c
+**	read_data.c
 */
-void				parse_links(int fd, t_maze *maze, char **split);
+void				read_data(int fd, t_maze *maze);
 
 /*
 **	errors.c
