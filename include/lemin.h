@@ -6,7 +6,7 @@
 /*   By: ypikul <ypikul@student.unit.ua>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/25 16:29:40 by ypikul            #+#    #+#             */
-/*   Updated: 2018/06/05 19:18:00 by ypikul           ###   ########.fr       */
+/*   Updated: 2018/06/08 02:45:03 by ypikul           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,9 @@
 #ifndef LEMIN_H
 # define LEMIN_H
 
-# define ROOM 0;
-# define START 1;
-# define FINISH 2;
+# define ROOM 0
+# define START 1
+# define FINISH 2
 
 typedef struct s_room	t_room;
 typedef struct s_link	t_link;
@@ -28,14 +28,15 @@ struct				s_room
 	char			*name;
 	int				x;
 	int				y;
-	unsigned int	cost;
+	unsigned int	ant : 1;
+	t_room			*root;
 	t_room			*next;
 };
 
 struct				s_link
 {
-	char			*name1;
-	char			*name2;
+	char			*name_1;
+	char			*name_2;
 	t_link			*next;
 };
 
@@ -52,7 +53,10 @@ typedef struct		s_maze
 	t_room			*start;
 	t_room			*finish;
 	t_link			*links;
-	\
+	/*
+	** data_copy - always points to the first element of the list
+	** data - need to equate to the printer before using
+	*/
 	t_data			*data;
 	t_data			*data_copy;
 	int				flag;
@@ -68,6 +72,11 @@ void				parse_links(t_maze *maze);
 **	read_data.c
 */
 void				read_data(int fd, t_maze *maze);
+
+/*
+**	validate.c
+*/
+void				validate(t_maze *maze); 
 
 /*
 **	errors.c

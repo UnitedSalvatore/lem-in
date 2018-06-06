@@ -4,8 +4,9 @@ LIBFT_DIR = libft
 LIBFT = $(LIBFT_DIR)/libft.a
 
 FILENAMES = main.c \
-			parse_rooms.c \
-			parse_links.c \
+			read_data.c \
+			parse.c \
+			validate.c \
 			errors.c \
 			functions.c 
 
@@ -19,7 +20,7 @@ FLAGS += -I./
 all: $(NAME)
 
 $(NAME): $(LIBFT) $(OBJECTS)
-	$(CC) -o $@ $(FLAGS) $^
+	$(CC) -o $@ $(FLAGS) $(OBJECTS) $(LIBFT)
 
 $(LIBFT):
 	make -C $(LIBFT_DIR)/
