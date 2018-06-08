@@ -57,7 +57,7 @@ static void	validate_rooms(t_maze *maze)
 		{
 			if (!ft_strcmp(room->name, next->name))
 				ft_error("ERROR: 2 or more rooms with the same name");
-			if (room->x == next->x && room->y && next->y)
+			if (room->x == next->x && room->y == next->y)
 				ft_error("ERROR: 2 or more rooms with the same coords");
 			next = next->next;
 		}

@@ -6,7 +6,7 @@
 /*   By: ypikul <ypikul@student.unit.ua>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/05 17:16:25 by ypikul            #+#    #+#             */
-/*   Updated: 2018/06/08 02:10:24 by ypikul           ###   ########.fr       */
+/*   Updated: 2018/06/08 17:53:45 by ypikul           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,4 +43,5 @@ void		read_data(int fd, t_maze *maze)
 		add_to_end(&maze->data, data);
 		str = NULL;
 	}
+	maze->data_copy = maze->data;
 }

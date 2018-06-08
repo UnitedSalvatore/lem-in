@@ -7,6 +7,8 @@ FILENAMES = main.c \
 			read_data.c \
 			parse.c \
 			validate.c \
+			connect_rooms.c \
+			find_path.c \
 			errors.c \
 			functions.c 
 
@@ -14,7 +16,7 @@ SOURCES = $(addprefix ./src/, $(FILENAMES))
 OBJECTS = $(addprefix ./, $(SOURCES:.c=.o))
 
 CC = gcc
-FLAGS ?= -Wall -Wextra -Werror
+FLAGS ?= -Wall -Wextra -Werror -g
 FLAGS += -I./
 
 all: $(NAME)

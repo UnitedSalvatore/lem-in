@@ -2,7 +2,14 @@
 ##start
 start 1 1
 middle 2 2
+middle2_1 2 1
+middle2_2 1 2
+middle2_3 3 4
 ##end
 end 3 3
 start-middle
+start-middle2_1
+middle2_1-middle2_2
+middle2_1-middle2_3
+middle2_2-end
 middle-end

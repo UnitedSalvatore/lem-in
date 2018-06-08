@@ -81,7 +81,10 @@ void			parse_rooms(t_maze *maze)
 		else if (!ft_strcmp(maze->data->line, "##end"))
 			flag = FINISH;
 		else if (*maze->data->line != '#')
+		{
 			create_room(maze, flag);
+			flag = ROOM;
+		}
 		maze->data = maze->data->next;
 	}
 }

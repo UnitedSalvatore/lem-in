@@ -6,7 +6,7 @@
 /*   By: ypikul <ypikul@student.unit.ua>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/25 16:29:40 by ypikul            #+#    #+#             */
-/*   Updated: 2018/06/08 02:45:03 by ypikul           ###   ########.fr       */
+/*   Updated: 2018/06/08 18:13:48 by ypikul           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,15 +22,35 @@
 typedef struct s_room	t_room;
 typedef struct s_link	t_link;
 typedef struct s_data	t_data;
+typedef struct s_edge	t_edge;
 
 struct				s_room
 {
+	/*
+	**	Main info
+	*/
 	char			*name;
 	int				x;
 	int				y;
-	unsigned int	ant : 1;
+	unsigned int	ant;
+
+	/*
+	**	BFS info
+	*/
+	unsigned short	visited;
 	t_room			*root;
+	t_edge			*edges;
+
+	/*
+	**	Other info
+	*/
 	t_room			*next;
+};
+
+struct 				s_edge
+{
+	t_room			*room;
+	t_edge			*next;
 };
 
 struct				s_link
@@ -53,13 +73,13 @@ typedef struct		s_maze
 	t_room			*start;
 	t_room			*finish;
 	t_link			*links;
+	t_edge			*queue;
 	/*
 	** data_copy - always points to the first element of the list
 	** data - need to equate to the printer before using
 	*/
 	t_data			*data;
 	t_data			*data_copy;
-	int				flag;
 }					t_maze;
 
 /*
@@ -77,6 +97,16 @@ void				read_data(int fd, t_maze *maze);
 **	validate.c
 */
 void				validate(t_maze *maze); 
+
+/*
+**	connect_rooms.c
+*/
+void				connect_rooms(t_maze *maze);
+
+/*
+**	find_path.c
+*/
+void				find_path(t_maze *maze);
 
 /*
 **	errors.c
