@@ -6,7 +6,7 @@
 /*   By: ypikul <ypikul@student.unit.ua>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/06 14:41:39 by ypikul            #+#    #+#             */
-/*   Updated: 2018/06/08 03:05:37 by ypikul           ###   ########.fr       */
+/*   Updated: 2018/06/09 16:25:04 by ypikul           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,10 +62,10 @@ static void	validate_rooms(t_maze *maze)
 			next = next->next;
 		}
 		room = room->next;
-	}		
+	}
 }
 
-void	validate(t_maze *maze)
+void		validate(t_maze *maze)
 {
 	validate_rooms(maze);
 	validate_links(maze);

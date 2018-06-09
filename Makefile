@@ -9,14 +9,14 @@ FILENAMES = main.c \
 			validate.c \
 			connect_rooms.c \
 			find_path.c \
-			errors.c \
+			print_result.c \
 			functions.c 
 
 SOURCES = $(addprefix ./src/, $(FILENAMES))
-OBJECTS = $(addprefix ./, $(SOURCES:.c=.o))
+OBJECTS = $(SOURCES:.c=.o)
 
 CC = gcc
-FLAGS ?= -Wall -Wextra -Werror -g
+FLAGS ?= -Wall -Wextra -Werror
 FLAGS += -I./
 
 all: $(NAME)

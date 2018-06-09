@@ -6,7 +6,7 @@
 /*   By: ypikul <ypikul@student.unit.ua>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/08 17:32:55 by ypikul            #+#    #+#             */
-/*   Updated: 2018/06/08 18:30:38 by ypikul           ###   ########.fr       */
+/*   Updated: 2018/06/09 16:23:37 by ypikul           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ static void		add_to_queue(t_edge **queue, t_room *room)
 	}
 }
 
-void		find_path(t_maze *maze)
+void			find_path(t_maze *maze)
 {
 	t_room	*room;
 	t_edge	*room_edge;
@@ -75,6 +75,6 @@ void		find_path(t_maze *maze)
 			room_edge = room_edge->next;
 		}
 	}
-	if (!maze->start->visited)
+	if (!maze->finish->visited)
 		ft_error("ERROR: There is no connection between start and finish");
 }

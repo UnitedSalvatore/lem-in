@@ -6,14 +6,14 @@
 /*   By: ypikul <ypikul@student.unit.ua>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/25 16:29:40 by ypikul            #+#    #+#             */
-/*   Updated: 2018/06/08 18:13:48 by ypikul           ###   ########.fr       */
+/*   Updated: 2018/06/09 16:27:35 by ypikul           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <string.h>
-
 #ifndef LEMIN_H
 # define LEMIN_H
+
+# include <string.h>
 
 # define ROOM 0
 # define START 1
@@ -26,28 +26,19 @@ typedef struct s_edge	t_edge;
 
 struct				s_room
 {
-	/*
-	**	Main info
-	*/
 	char			*name;
 	int				x;
 	int				y;
 	unsigned int	ant;
 
-	/*
-	**	BFS info
-	*/
 	unsigned short	visited;
 	t_room			*root;
 	t_edge			*edges;
 
-	/*
-	**	Other info
-	*/
 	t_room			*next;
 };
 
-struct 				s_edge
+struct				s_edge
 {
 	t_room			*room;
 	t_edge			*next;
@@ -74,10 +65,6 @@ typedef struct		s_maze
 	t_room			*finish;
 	t_link			*links;
 	t_edge			*queue;
-	/*
-	** data_copy - always points to the first element of the list
-	** data - need to equate to the printer before using
-	*/
 	t_data			*data;
 	t_data			*data_copy;
 }					t_maze;
@@ -96,7 +83,7 @@ void				read_data(int fd, t_maze *maze);
 /*
 **	validate.c
 */
-void				validate(t_maze *maze); 
+void				validate(t_maze *maze);
 
 /*
 **	connect_rooms.c
@@ -109,13 +96,14 @@ void				connect_rooms(t_maze *maze);
 void				find_path(t_maze *maze);
 
 /*
-**	errors.c
-*/
-void				ft_error(char *str);
-
-/*
 **	functions.c
 */
 size_t				ft_numlen(unsigned int num);
+void				ft_error(char *str);
+
+/*
+**	print_result.c
+*/
+void				print_result(t_maze *maze, unsigned short flag);
 
 #endif

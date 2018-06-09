@@ -6,7 +6,7 @@
 /*   By: ypikul <ypikul@student.unit.ua>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/05 18:30:02 by ypikul            #+#    #+#             */
-/*   Updated: 2018/06/08 02:24:57 by ypikul           ###   ########.fr       */
+/*   Updated: 2018/06/09 16:24:09 by ypikul           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ static void		create_room(t_maze *maze, int flag)
 
 	if (!(split = ft_strsplit(maze->data->line, ' ')))
 		ft_error("Error while allocating memory");
-	if (!split[0] || !split[1] || !split[2] || split [3])
+	if (!split[0] || !split[1] || !split[2] || split[3])
 		ft_error("Error in block of rooms");
 	if (!(room = ft_memalloc(sizeof(t_room))) || \
 		!(room->name = ft_strdup(split[0])))
@@ -52,11 +52,11 @@ void			parse_links(t_maze *maze)
 		{
 			if (!(split = ft_strsplit(maze->data->line, '-')))
 				ft_error("Error while allocating memory");
-			else if (!split[0] || !split[1] || split [2])
+			else if (!split[0] || !split[1] || split[2])
 				ft_error("ERROR: Links: syntax error");
 			if (!(link = ft_memalloc(sizeof(t_link))))
 				ft_error("Error while allocating memory");
-			link->name_1 = split[0];	
+			link->name_1 = split[0];
 			link->name_2 = split[1];
 			link->next = maze->links;
 			maze->links = link;
